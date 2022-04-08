@@ -34,13 +34,16 @@ const sketch = ({ context, width, height }) => {
 
         if(dist > 200) continue;
 
-        context.lineWidth = math.mapRange(dist, 0, 200,12,1);
+        context.lineWidth = math.mapRange(dist, 0, 200, 12, 1);
+        context.strokeStyle = `rgba(0, 0, 0, ${math.mapRange(dist, 0, 200, 1, 0.1)})`;
         context.beginPath();
         context.moveTo(source.pos.x, source.pos.y);
         context.lineTo(target.pos.x, target.pos.y);
         context.stroke();
       }
     }
+
+    context.strokeStyle = 'black';
 
     Agents.forEach( (a) =>{
       a.update();
