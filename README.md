@@ -30,3 +30,8 @@ canvas-sketch sketch-0X
 - 01 - Random Matrix generator
 - 02 - Random disorted clock
 - 03 - Animated network
+
+
+## Credits
+
+This sketches are based on the work of Bruno Imbrizi
