@@ -34,4 +34,4 @@ canvas-sketch sketch-0X
 
 ## Credits
 
-This sketches are based on the work of Bruno Imbrizi
+These sketches are based on the work of Bruno Imbrizi.
