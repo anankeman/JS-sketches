@@ -32,8 +32,8 @@ const sketch = () => {
     const radius = width * 0.3;
 
     for (let i = 0;  i < num; i++){
-      context.fillStyle = `rgba(${randomRange(100, 200)}, ${randomRange(100, 200)}, ${randomRange(100, 200)}, 0.9)`;
-
+      context.fillStyle = `rgba(${randomRange(100, 255)}, ${randomRange(100, 255)}, ${randomRange(100, 255)}, 0.9)`;
+      context.strokeStyle = `rgba(${randomRange(100, 255)}, ${randomRange(100, 255)}, ${randomRange(100, 255)}, 1)`;
       const slice = deg2Rad(360 / num);
       const angle = slice * i;
 
