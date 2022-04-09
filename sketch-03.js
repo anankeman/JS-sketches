@@ -1,6 +1,12 @@
 const canvasSketch = require('canvas-sketch');
 const random = require('canvas-sketch-util/random');
 const math = require('canvas-sketch-util/math');
+const Tweakpane = require('tweakpane');
+
+const params = {
+  maxDistance: 200,
+  numAgents: 40,
+};
 
 const settings = {
   dimensions: [ 1080, 1080 ], 
@@ -14,7 +20,9 @@ function mod(n, m) {
 const sketch = ({ context, width, height }) => {
   const Agents = [];
 
-  for (let i = 0; i < 40; i++){
+  const numAgents = params.numAgents;
+
+  for (let i = 0; i < numAgents; i++){
     const x = random.range(0, width);
     const y = random.range(0, height);
     Agents.push(new Agent(x, y));
@@ -32,10 +40,10 @@ const sketch = ({ context, width, height }) => {
 
         const dist = source.pos.getDistance(target.pos);
 
-        if(dist > 200) continue;
+        if(dist > params.maxDistance) continue;
 
-        context.lineWidth = math.mapRange(dist, 0, 200, 12, 1);
-        context.strokeStyle = `rgba(0, 0, 0, ${math.mapRange(dist, 0, 200, 1, 0.1)})`;
+        context.lineWidth = math.mapRange(dist, 0, params.maxDistance, 12, 1);
+        context.strokeStyle = `rgba(0, 0, 0, ${math.mapRange(dist, 0, params.maxDistance, 1, 0.1)})`;
         context.beginPath();
         context.moveTo(source.pos.x, source.pos.y);
         context.lineTo(target.pos.x, target.pos.y);
@@ -103,5 +111,16 @@ class Agent {
     context.restore();
   }
 }
+
+
+const createPane = () => {
+  const pane = new Tweakpane.Pane();
+  let folder; 
+  folder = pane.addFolder({title: 'Control '});
+  folder.addInput(params, 'maxDistance', {min: 20, max: 1000});
+  folder.addInput(params, 'numAgents', {min: 0, max: 100});
+}
+
+createPane();
 
 canvasSketch(sketch, settings);
