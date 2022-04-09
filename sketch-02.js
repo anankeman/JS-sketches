@@ -3,7 +3,8 @@ const math = require('canvas-sketch-util/math');
 const random = require('canvas-sketch-util/random');
 
 const settings = {
-  dimensions: [ 1080, 1080 ]
+  dimensions: [ 1080, 1080 ], 
+  //animate: true
 };
 
 const deg2Rad = (degree) => {
@@ -15,6 +16,8 @@ const randomRange = (min, max) => {
 }
 
 const sketch = () => {
+
+
   return ({ context, width, height }) => {
     context.fillStyle = 'white';
     context.fillRect(0, 0, width, height);
@@ -62,13 +65,6 @@ const sketch = () => {
       context.restore();
 
     }
-
-
-    //context.translate(100, 400);
-    //context.beginPath();
-    //context.arc(0,0,50,0,Math.PI * 2);
-    //context.fill();
-
     
   };
 };
